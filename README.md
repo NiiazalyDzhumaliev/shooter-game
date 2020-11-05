@@ -1,2 +1,2 @@
 # shooter-game
-A shooter game usong Phaser
+A shooter game using Phaser
