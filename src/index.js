@@ -20,4 +20,6 @@ class Game extends Phaser.Game {
   }
 }
  
-window.game = new Game();
+let game = new Game();
+
+

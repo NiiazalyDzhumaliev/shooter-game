@@ -5,12 +5,16 @@ export default class GameScene extends Phaser.Scene {
     super('Game');
   }
  
-  preload () {
-    // load images
-    this.load.image('logo', 'src/assets/logo.png');
+  preload () {    
+    // this.load.image('playerShip', 'src/assets/playerShip.png');
+    // this.load.image('water', 'src/assets/water.jpg');
+    // this.load.image('blaster', 'src/assets/blasterbolt.png')
   }
  
-  create () {
-    this.add.image(400, 300, 'logo');
+  create() {
+    // this.add.image(400, 300, 'water');
+    // // this.add.image(400, 550, 'playerShip');
+    // let ship = game.add.sprite(game.world.centerX, game.world.centerY, 'playerShip');
+    // ship.anchor.setTo(0.5, 0.5);
   }
 };
