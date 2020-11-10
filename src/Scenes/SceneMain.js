@@ -78,24 +78,24 @@ export default class SceneMain extends Phaser.Scene {
       'sprPlayer',
     );
 
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+    this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+    this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
 
   update() {
     this.player.update();
-    if (this.keyW.isDown) {
+    if (this.keyUp.isDown) {
       this.player.moveUp();
-    } else if (this.keyS.isDown) {
+    } else if (this.keyDown.isDown) {
       this.player.moveDown();
     }
 
-    if (this.keyA.isDown) {
+    if (this.keyLeft.isDown) {
       this.player.moveLeft();
-    } else if (this.keyD.isDown) {
+    } else if (this.keyRight.isDown) {
       this.player.moveRight();
     }
   }
