@@ -3,6 +3,7 @@ import config from './Config/config';
 import SceneMainMenu from './Scenes/SceneMainMenu';
 import SceneMain from './Scenes/SceneMain';
 import SceneGameOver from './Scenes/SceneGameOver';
+import Entities from './Scenes/Entities';
 // import GameScene from './Scenes/GameScene';
 // import BootScene from './Scenes/BootScene';
 // import PreloaderScene from './Scenes/PreloaderScene';
