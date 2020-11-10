@@ -15,10 +15,8 @@ export default class SceneMainMenu extends Phaser.Scene {
 
     this.load.audio('sndBtnOver', 'src/assets/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'src/assets/sndBtnDown.wav');
-    this.load.image('logo', 'src/assets/logo.png');
   }
 
   create() {
-    this.add.image(400, 300, 'logo');
   }
 }
