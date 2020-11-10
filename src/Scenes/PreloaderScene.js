@@ -1,13 +1,13 @@
 import 'phaser';
- 
+
 export default class PreloaderScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Preloader');
   }
- 
-  preload () {
+
+  preload() {
   }
- 
-  create () {
+
+  create() {
   }
-};
+}

@@ -1,13 +1,13 @@
 import 'phaser';
- 
+
 export default class TitleScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Title');
   }
- 
-  preload () {
+
+  preload() {
   }
- 
-  create () {
+
+  create() {
   }
-};
+}
