@@ -3,6 +3,7 @@ import Player from '../Objects/Player';
 import GunShip from '../Objects/GunShip';
 import ChaserShip from '../Objects/ChaserShip';
 import CarrierShip from '../Objects/CarrierShip';
+import ScrollingBackground from '../Objects/ScrollingBackground';
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -73,6 +74,12 @@ export default class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+      this.backgrounds.push(bg);
+    }
 
     this.player = new Player(
       this,
@@ -220,6 +227,10 @@ export default class SceneMain extends Phaser.Scene {
           laser.destroy();
         }
       }
+    }
+
+    for (let i = 0; i < this.backgrounds.length; i += 1) {
+      this.backgrounds[i].update();
     }
   }
 
