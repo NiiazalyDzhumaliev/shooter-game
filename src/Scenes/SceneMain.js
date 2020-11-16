@@ -3,7 +3,7 @@ import Player from '../Objects/Player';
 import GunShip from '../Objects/GunShip';
 import ChaserShip from '../Objects/ChaserShip';
 import CarrierShip from '../Objects/CarrierShip';
-import ScrollingBackground from '../Objects/ScrollingBackground';
+
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -11,7 +11,7 @@ export default class SceneMain extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sprBg0', 'src/assets/sprBg0.png');
+    this.load.image('sky', 'src/assets/sky.png');
     this.load.image('sprBg1', 'src/assets/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'src/assets/sprExplosion.png', {
       frameWidth: 32,
@@ -28,10 +28,7 @@ export default class SceneMain extends Phaser.Scene {
     });
     this.load.image('sprLaserEnemy0', 'src/assets/sprLaserEnemy0.png');
     this.load.image('sprLaserPlayer', 'src/assets/sprLaserPlayer.png');
-    this.load.spritesheet('sprPlayer', 'src/assets/sprPlayer.png', {
-      frameWidth: 16,
-      frameHeight: 16,
-    });
+    this.load.image('sprPlayer', 'src/assets/space.png');
 
     this.load.audio('sndExplode0', 'src/assets/sndExplode0.wav');
     this.load.audio('sndExplode1', 'src/assets/sndExplode1.wav');
@@ -39,6 +36,7 @@ export default class SceneMain extends Phaser.Scene {
   }
 
   create() {
+    this.add.image(400, 300, 'sky');
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -60,12 +58,7 @@ export default class SceneMain extends Phaser.Scene {
       repeat: 0,
     });
 
-    this.anims.create({
-      key: 'sprPlayer',
-      frames: this.anims.generateFrameNumbers('sprPlayer'),
-      frameRate: 20,
-      repeat: -1,
-    });
+    this.add.image('sprPlayer');
 
     this.sfx = {
       explosions: [
@@ -74,12 +67,6 @@ export default class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
-
-    this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
-      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
-      this.backgrounds.push(bg);
-    }
 
     this.player = new Player(
       this,
@@ -231,9 +218,9 @@ export default class SceneMain extends Phaser.Scene {
       }
     }
 
-    for (let i = 0; i < this.backgrounds.length; i += 1) {
-      this.backgrounds[i].update();
-    }
+    // for (let i = 0; i < this.backgrounds.length; i += 1) {
+    //   this.backgrounds[i].update();
+    // }
   }
 
   getEnemiesByType(type) {
