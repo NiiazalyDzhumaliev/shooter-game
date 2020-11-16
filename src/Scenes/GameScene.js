@@ -5,9 +5,9 @@ import ChaserShip from '../Objects/ChaserShip';
 import CarrierShip from '../Objects/CarrierShip';
 
 
-export default class SceneMain extends Phaser.Scene {
+export default class GameScene extends Phaser.Scene {
   constructor() {
-    super('MainScene');
+    super('GameScene');
   }
 
   preload() {
