@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-// import ScrollingBackground from '../Objects/ScrollingBackground';
 
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
@@ -8,7 +7,6 @@ export default class SceneGameOver extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', 'src/assets/sky.png');
-    // this.load.image('sprBg1', 'src/assets/sprBg1.png');
     this.load.image('sprBtnPlay', 'src/assets/sprBtnPlay.png');
     this.load.image('sprBtnPlayHover', 'src/assets/sprBtnPlayHover.png');
     this.load.image('sprBtnPlayDown', 'src/assets/sprBtnPlayDown.png');
@@ -62,13 +60,5 @@ export default class SceneGameOver extends Phaser.Scene {
       this.btnRestart.setTexture('sprBtnRestart');
       this.scene.start('MainScene');
     }, this);
-
-    // this.backgrounds = [];
-    // for (let i = 0; i < 5; i += 1) {
-    //   const keys = ['sprBg0', 'sprBg1'];
-    //   const key = keys[Phaser.Math.Between(0, keys.length - 1)];
-    //   const bg = new ScrollingBackground(this, key, i * 10);
-    //   this.backgrounds.push(bg);
-    // }
   }
 }

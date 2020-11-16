@@ -28,7 +28,10 @@ export default class SceneMain extends Phaser.Scene {
     });
     this.load.image('sprLaserEnemy0', 'src/assets/sprLaserEnemy0.png');
     this.load.image('sprLaserPlayer', 'src/assets/sprLaserPlayer.png');
-    this.load.image('sprPlayer', 'src/assets/space.png');
+    this.load.spritesheet('sprPlayer', 'src/assets/space.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
 
     this.load.audio('sndExplode0', 'src/assets/sndExplode0.wav');
     this.load.audio('sndExplode1', 'src/assets/sndExplode1.wav');
@@ -58,7 +61,12 @@ export default class SceneMain extends Phaser.Scene {
       repeat: 0,
     });
 
-    this.add.image('sprPlayer');
+    this.anims.create({
+      key: 'sprPlayer',
+      frames: this.anims.generateFrameNumbers('sprPlayer'),
+      frameRate: 20,
+      repeat: -1,
+    });
 
     this.sfx = {
       explosions: [
@@ -134,7 +142,7 @@ export default class SceneMain extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead')
-      && !enemy.getData('isDead')) {
+        && !enemy.getData('isDead')) {
         player.explode(false);
         player.onDestroy();
         enemy.explode(true);
@@ -143,7 +151,7 @@ export default class SceneMain extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead')
-      && !laser.getData('isDead')) {
+        && !laser.getData('isDead')) {
         player.explode(false);
         player.onDestroy();
         laser.destroy();
@@ -178,9 +186,9 @@ export default class SceneMain extends Phaser.Scene {
 
       enemy.update();
       if (enemy.x < -enemy.displayWidth
-    || enemy.x > this.game.config.width + enemy.displayWidth
-    || enemy.y < -enemy.displayHeight * 4
-    || enemy.y > this.game.config.height + enemy.displayHeight) {
+        || enemy.x > this.game.config.width + enemy.displayWidth
+        || enemy.y < -enemy.displayHeight * 4
+        || enemy.y > this.game.config.height + enemy.displayHeight) {
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
@@ -217,10 +225,6 @@ export default class SceneMain extends Phaser.Scene {
         }
       }
     }
-
-    // for (let i = 0; i < this.backgrounds.length; i += 1) {
-    //   this.backgrounds[i].update();
-    // }
   }
 
   getEnemiesByType(type) {
