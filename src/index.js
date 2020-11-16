@@ -13,7 +13,7 @@ class Game extends Phaser.Game {
     this.scene.start('Boot');
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('MainMenu', MainMenuScene);
-    this.scene.add('GaimScene', GameScene);
+    this.scene.add('GameScene', GameScene);
     this.scene.add('GameOverScene', GameOverScene);
   }
 }

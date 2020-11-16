@@ -79,7 +79,7 @@ export default class GameScene extends Phaser.Scene {
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.9,
       'sprPlayer',
     );
 
