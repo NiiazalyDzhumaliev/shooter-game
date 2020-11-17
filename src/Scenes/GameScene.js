@@ -3,14 +3,22 @@ import Player from '../Objects/Player';
 import GunShip from '../Objects/GunShip';
 import ChaserShip from '../Objects/ChaserShip';
 import CarrierShip from '../Objects/CarrierShip';
-
+import game from '../Objects/game';
+import score from '../Objects/score';
+// import { getScores } from '../Objects/scoreApi';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('GameScene');
   }
 
+  init() {
+    this.score = 0;
+    this.addvalue = 0;
+  }
+
   preload() {
+    this.gameStatus = game(true);
     this.load.image('sky', 'src/assets/sky.png');
     this.load.image('sprBg1', 'src/assets/sprBg1.png');
     this.load.spritesheet('sprExplosion', 'src/assets/sprExplosion.png', {
@@ -75,6 +83,28 @@ export default class GameScene extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
+
+    this.textScore = this.add.text(
+      12,
+      10,
+      `Score: ${this.score}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 20,
+        align: 'left',
+      },
+    );
+
+    this.topScoreApi = this.add.text(
+      200,
+      10,
+      'Top Score: ',
+      {
+        fontFamily: 'monospace',
+        fontSize: 20,
+        align: 'left',
+      },
+    );
 
     this.player = new Player(
       this,
@@ -157,7 +187,28 @@ export default class GameScene extends Phaser.Scene {
         laser.destroy();
       }
     });
+    // this.topScore();
   }
+
+  addScore(amount) {
+    this.score = score(this.score, amount);
+    this.textScore.setText(`Score: ${this.score}`);
+  }
+
+  // async topScore() {
+  //   const resultObject = await getScores();
+
+  //   if (Array.isArray(resultObject.result)) {
+  //     this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
+
+  //     for (let i = 0; i < 1; i += 1) {
+  //       this.topScoreApi.setText(`Score: ${this.scores[i].score}`);
+  //       localStorage.setItem('highScore', this.scores[i].score);
+  //     }
+  //   } else {
+  //     this.topScoreApi.setText(`Score: ${resultObject}`);
+  //   }
+  // }
 
   update() {
     if (!this.player.getData('isDead')) {
@@ -179,6 +230,7 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
         this.player.setData('isShooting', false);
       }
+      localStorage.setItem('gameScore', this.score);
     }
 
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
