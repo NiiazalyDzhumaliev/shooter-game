@@ -1,8 +1,12 @@
 import Phaser from 'phaser';
+import { postScore } from '../Objects/scoreApi';
 
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
     super('GameOver');
+    this.gameScore = 0;
+    this.myScore = 0;
+    this.savedScore = 0;
   }
 
   preload() {

@@ -5,7 +5,7 @@ import ChaserShip from '../Objects/ChaserShip';
 import CarrierShip from '../Objects/CarrierShip';
 import game from '../Objects/game';
 import score from '../Objects/score';
-// import { getScores } from '../Objects/scoreApi';
+import { getScores } from '../Objects/scoreApi';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -187,7 +187,7 @@ export default class GameScene extends Phaser.Scene {
         laser.destroy();
       }
     });
-    // this.topScore();
+    this.topScore();
   }
 
   addScore(amount) {
@@ -195,20 +195,20 @@ export default class GameScene extends Phaser.Scene {
     this.textScore.setText(`Score: ${this.score}`);
   }
 
-  // async topScore() {
-  //   const resultObject = await getScores();
+  async topScore() {
+    const resultObject = await getScores();
 
-  //   if (Array.isArray(resultObject.result)) {
-  //     this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
+    if (Array.isArray(resultObject.result)) {
+      this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
 
-  //     for (let i = 0; i < 1; i += 1) {
-  //       this.topScoreApi.setText(`Score: ${this.scores[i].score}`);
-  //       localStorage.setItem('highScore', this.scores[i].score);
-  //     }
-  //   } else {
-  //     this.topScoreApi.setText(`Score: ${resultObject}`);
-  //   }
-  // }
+      for (let i = 0; i < 1; i += 1) {
+        this.topScoreApi.setText(`Score: ${this.scores[i].score}`);
+        localStorage.setItem('highScore', this.scores[i].score);
+      }
+    } else {
+      this.topScoreApi.setText(`Score: ${resultObject}`);
+    }
+  }
 
   update() {
     if (!this.player.getData('isDead')) {

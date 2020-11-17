@@ -49,7 +49,7 @@ export default class SceneMainMenu extends Phaser.Scene {
 
     this.btnPlay.on('pointerup', () => {
       this.btnPlay.setTexture('sprBtnPlay');
-      this.scene.start('GameScene');
+      this.scene.start('InputScene');
     }, this);
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE SHOOTER', {
