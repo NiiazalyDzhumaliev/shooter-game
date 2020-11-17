@@ -78,10 +78,10 @@ export default class GameScene extends Phaser.Scene {
 
     this.sfx = {
       explosions: [
-        this.sound.add('sndExplode0'),
-        this.sound.add('sndExplode1'),
+        this.sound.add('sndExplode0', { volume: 0.05 }),
+        this.sound.add('sndExplode1', { volume: 0.05 }),
       ],
-      laser: this.sound.add('sndLaser'),
+      laser: this.sound.add('sndLaser', { volume: 0.05 }),
     };
 
     this.textScore = this.add.text(

@@ -21,8 +21,8 @@ export default class SceneMainMenu extends Phaser.Scene {
   create() {
     this.add.image(400, 300, 'sky');
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.05 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.05 }),
     };
 
     this.btnPlay = this.add.sprite(

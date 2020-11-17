@@ -30,8 +30,8 @@ export default class SceneGameOver extends Phaser.Scene {
     this.title.setOrigin(0.5);
 
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.05 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.05 }),
     };
 
     this.btnRestart = this.add.sprite(
