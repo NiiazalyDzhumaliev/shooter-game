@@ -34,8 +34,8 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnPlay.setInteractive();
 
     this.btnPlay.on('pointerover', () => {
-      this.btnPlay.setTexture('sprBtnPlayHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
+      this.btnPlay.setTexture('sprBtnPlayHover'); 
+      this.sfx.btnOver.play(); 
     }, this);
 
     this.btnPlay.on('pointerout', () => {
