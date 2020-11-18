@@ -61,7 +61,6 @@ export default class InputScene extends Phaser.Scene {
       }
     });
 
-
     this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton2');
     });

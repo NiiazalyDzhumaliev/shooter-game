@@ -61,21 +61,5 @@ export default class SceneMainMenu extends Phaser.Scene {
     });
 
     this.title.setOrigin(0.5);
-    this.gameButton3 = this.add.sprite(400, 300, 'button2').setInteractive();
-
-    this.gameText = this.add.text(0, 0, 'Leaderboard', { fontSize: '25px', fill: '#fff' });
-    this.centerButtonText(this.gameText, this.gameButton3);
-
-    this.gameButton3.on('pointerdown', () => {
-      this.scene.start('LeaderBoardScene');
-      this.sfx.btnDown.play();
-    });
-  }
-
-  centerButtonText(gameText, gameButton) {
-    Phaser.Display.Align.In.Center(
-      gameText,
-      gameButton,
-    );
   }
 }

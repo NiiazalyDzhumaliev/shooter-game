@@ -37,7 +37,6 @@ export default class GameOverScene extends Phaser.Scene {
     this.savedScore = parseInt(this.highScore, 10);
     this.playerName = localStorage.getItem('DHplayerName');
 
-
     this.textScore = this.add.text(
       270,
       300,
@@ -84,7 +83,6 @@ export default class GameOverScene extends Phaser.Scene {
     });
 
     this.checkHighScore();
-
 
     this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('button3');

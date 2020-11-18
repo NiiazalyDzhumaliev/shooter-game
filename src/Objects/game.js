@@ -1,3 +1,3 @@
 const game = status => status;
 
-export default game;
+module.exports = game;
