@@ -202,11 +202,11 @@ export default class GameScene extends Phaser.Scene {
       this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
 
       for (let i = 0; i < 1; i += 1) {
-        this.topScoreApi.setText(`Score: ${this.scores[i].score}`);
+        this.topScoreApi.setText(`Top Score: ${this.scores[i].score}`);
         localStorage.setItem('highScore', this.scores[i].score);
       }
     } else {
-      this.topScoreApi.setText(`Score: ${resultObject}`);
+      this.topScoreApi.setText(`Top Score: ${resultObject}`);
     }
   }
 

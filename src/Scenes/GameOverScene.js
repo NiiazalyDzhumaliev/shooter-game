@@ -1,5 +1,4 @@
-/* eslint-disable radix */
-/* eslint-disable class-methods-use-this */
+// /* eslint-disable class-methods-use-this */
 import Phaser from 'phaser';
 import config from '../Config/config';
 import { postScore } from '../Objects/scoreApi';
@@ -13,6 +12,7 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
+    this.add.image(400, 300, 'sky');
     this.gameButton = this.add.sprite(200, 200, 'button2').setInteractive();
     this.centerButton(this.gameButton, 1);
 
@@ -32,9 +32,9 @@ export default class GameOverScene extends Phaser.Scene {
     this.title.setOrigin(0.5);
 
     this.gameScore = localStorage.getItem('gameScore');
-    this.myScore = parseInt(this.gameScore);
+    this.myScore = parseInt(this.gameScore, 10);
     this.highScore = localStorage.getItem('highScore');
-    this.savedScore = parseInt(this.highScore);
+    this.savedScore = parseInt(this.highScore, 10);
     this.playerName = localStorage.getItem('DHplayerName');
 
 
@@ -80,7 +80,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.centerButtonText(this.gameText, this.gameButton3);
 
     this.gameButton3.on('pointerdown', () => {
-      this.scene.start('Leaderboard');
+      this.scene.start('LeaderBoardScene');
     });
 
     this.checkHighScore();

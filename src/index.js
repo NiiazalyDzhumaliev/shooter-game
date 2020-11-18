@@ -6,6 +6,7 @@ import MainMenuScene from './Scenes/MainMenuScene';
 import GameScene from './Scenes/GameScene';
 import GameOverScene from './Scenes/GameOverScene';
 import InputScene from './Scenes/InputScene';
+import LeaderBoardScene from './Scenes/LeaderBoardScene';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -17,6 +18,7 @@ class Game extends Phaser.Game {
     this.scene.add('InputScene', InputScene);
     this.scene.add('GameScene', GameScene);
     this.scene.add('GameOverScene', GameOverScene);
+    this.scene.add('LeaderBoardScene', LeaderBoardScene);
   }
 }
 

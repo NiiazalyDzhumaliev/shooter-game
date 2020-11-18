@@ -7,7 +7,8 @@ export default class InputScene extends Phaser.Scene {
   }
 
   create() {
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'DRAGON FIGHTER', {
+    this.add.image(400, 300, 'sky');
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'SHOOTER GAME', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
@@ -32,11 +33,11 @@ export default class InputScene extends Phaser.Scene {
     document.querySelector('#game').appendChild(nameInput);
 
     this.title1 = this.add.text(70, 350,
-      'Please use the keys A S D W and Space to play', {
+      'Please use the ARROW KEYS and Space to play', {
         fontFamily: 'monospace',
         fontSize: 25,
         fontStyle: 'bold',
-        color: '#ffffff',
+        color: '#ffbb00',
       });
 
     this.alertMsg = this.add.text(250, 400,
