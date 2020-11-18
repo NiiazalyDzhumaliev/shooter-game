@@ -57,7 +57,7 @@ A player is fighting against enemy planes.
 - In order to get started with the game, I had to start by going through a tutorial on how to use Phaser [here](http://phaser.io/tutorials/making-your-first-phaser-3-game). This alongside the phaser documentation and examples provided the basic knowledge.
 
 #### Assets
-- I used asset s from [OpenGameArt](https://opengameart.org/)
+- I used assets from [OpenGameArt](https://opengameart.org/)
 
 #### Development
 - To develop the game I used Phaser Examples, tutorials and relative videos.
