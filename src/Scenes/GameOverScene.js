@@ -1,68 +1,120 @@
+/* eslint-disable radix */
+/* eslint-disable class-methods-use-this */
 import Phaser from 'phaser';
+import config from '../Config/config';
 import { postScore } from '../Objects/scoreApi';
 
-export default class SceneGameOver extends Phaser.Scene {
+export default class GameOverScene extends Phaser.Scene {
   constructor() {
-    super('GameOver');
+    super('GameOverScene');
     this.gameScore = 0;
     this.myScore = 0;
     this.savedScore = 0;
   }
 
-  preload() {
-    this.load.image('sky', 'src/assets/sky.png');
-    this.load.image('sprBtnPlay', 'src/assets/sprBtnPlay.png');
-    this.load.image('sprBtnPlayHover', 'src/assets/sprBtnPlayHover.png');
-    this.load.image('sprBtnPlayDown', 'src/assets/sprBtnPlayDown.png');
-    this.load.image('sprBtnRestart', 'src/assets/sprBtnRestart.png');
-    this.load.image('sprBtnRestartHover', 'src/assets/sprBtnRestartHover.png');
-    this.load.image('sprBtnRestartDown', 'src/assets/sprBtnRestartDown.png');
-
-    this.load.audio('sndBtnOver', 'src/assets/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', 'src/assets/sndBtnDown.wav');
-  }
-
   create() {
-    this.add.image(400, 300, 'sky');
+    this.gameButton = this.add.sprite(200, 200, 'button2').setInteractive();
+    this.centerButton(this.gameButton, 1);
+
+    this.gameText = this.add.text(0, 0, 'Restart', { fontSize: '32px', fill: '#fff' });
+    this.centerButtonText(this.gameText, this.gameButton);
+
+    this.gameButton.on('pointerdown', () => {
+      this.scene.start('GameScene');
+    });
+
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
-      align: 'center',
     });
     this.title.setOrigin(0.5);
 
-    this.sfx = {
-      btnOver: this.sound.add('sndBtnOver', { volume: 0.05 }),
-      btnDown: this.sound.add('sndBtnDown', { volume: 0.05 }),
-    };
+    this.gameScore = localStorage.getItem('gameScore');
+    this.myScore = parseInt(this.gameScore);
+    this.highScore = localStorage.getItem('highScore');
+    this.savedScore = parseInt(this.highScore);
+    this.playerName = localStorage.getItem('DHplayerName');
 
-    this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      'sprBtnRestart',
+
+    this.textScore = this.add.text(
+      270,
+      300,
+      `Your Score: ${this.gameScore}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 32,
+        color: '#ffffff',
+        align: 'center',
+      },
     );
 
-    this.btnRestart.setInteractive();
+    this.highScore = this.add.text(
+      270,
+      250,
+      `High Score: ${this.highScore}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 32,
+        color: '#ffffff',
+        align: 'center',
+      },
+    );
 
-    this.btnRestart.on('pointerover', () => {
-      this.btnRestart.setTexture('sprBtnRestartHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
+    this.congra = this.add.text(
+      150,
+      450,
+      ' ',
+      {
+        fontFamily: 'monospace',
+        fontSize: 32,
+        color: 'pink',
+        align: 'center',
+      },
+    );
 
-    this.btnRestart.on('pointerout', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
+    this.gameButton3 = this.add.sprite(395, 390, 'button2').setInteractive();
+
+    this.gameText = this.add.text(0, 0, 'Leaderboard', { fontSize: '25px', fill: '#fff' });
+    this.centerButtonText(this.gameText, this.gameButton3);
+
+    this.gameButton3.on('pointerdown', () => {
+      this.scene.start('Leaderboard');
     });
 
-    this.btnRestart.on('pointerdown', () => {
-      this.btnRestart.setTexture('sprBtnRestartDown');
-      this.sfx.btnDown.play();
-    }, this);
+    this.checkHighScore();
 
-    this.btnRestart.on('pointerup', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
-      this.scene.start('GameScene');
-    }, this);
+
+    this.input.on('pointerover', (event, gameObjects) => {
+      gameObjects[0].setTexture('button3');
+    });
+
+    this.input.on('pointerout', (event, gameObjects) => {
+      gameObjects[0].setTexture('button2');
+    });
+  }
+
+  checkHighScore() {
+    if (this.myScore > this.savedScore) {
+      this.congra.setText('CONGRATULATIONS ON NEW HIGH SCORE!!');
+      postScore(this.playerName, this.gameScore);
+    }
+  }
+
+  centerButton(gameObject, offset = 0) {
+    Phaser.Display.Align.In.Center(
+      gameObject,
+      this.add.zone(config.width / 2,
+        config.height / 2 - offset * 100,
+        config.width, config.height),
+    );
+  }
+
+  centerButtonText(gameText, gameButton) {
+    Phaser.Display.Align.In.Center(
+      gameText,
+      gameButton,
+    );
   }
 }

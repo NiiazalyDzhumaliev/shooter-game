@@ -79,6 +79,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('sky', 'src/assets/sky.png');
     this.load.image('sprBg1', 'src/assets/sprBg1.png');
     this.load.image('button2', 'src/assets/button2.png');
+    this.load.image('button3', 'src/assets/button3.png');
     this.load.spritesheet('sprExplosion', 'src/assets/sprExplosion.png', {
       frameWidth: 32,
       frameHeight: 32,

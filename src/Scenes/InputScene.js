@@ -54,7 +54,6 @@ export default class InputScene extends Phaser.Scene {
       if (nameInput.value !== '') {
         localStorage.setItem('DHplayerName', nameInput.value);
         nameInput.style.display = 'none';
-        console.log(localStorage);
         this.scene.start('GameScene');
       } else {
         this.alertMsg.setText('Alert: Name Required!');
