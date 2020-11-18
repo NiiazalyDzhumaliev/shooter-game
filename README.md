@@ -46,7 +46,7 @@ npm run test
 ## About the game
 A player is fighting against enemy planes.
 
-## Screenshots
+## Game screenshots
 ![menu](assets/screenshots/menu.png)
 ![input](assets/screenshots/input.png)
 ![gameplay](assets/screenshots/gameplay.png)
