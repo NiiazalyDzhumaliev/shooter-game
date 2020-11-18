@@ -68,7 +68,7 @@ export default class GameOverScene extends Phaser.Scene {
       {
         fontFamily: 'monospace',
         fontSize: 32,
-        color: 'pink',
+        color: '#ffffff',
         align: 'center',
       },
     );
