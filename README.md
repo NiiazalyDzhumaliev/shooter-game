@@ -44,7 +44,14 @@ npm run test
 + SHOOT FIRE: Press [SPACEBAR] key
 
 ## About the game
-A player is fighting against enemy planes.
+A player is fighting against enemy ships. The player has a modern fighter plane and can shoot with fireballs that can destroy any ship. For each destroyed enemy the player will gain 20 points. The purpose of the game is to take as much points as possible to beat the highscore of other gamers. There are 3 types of enemies:
+
+- Gunships - can shoot with with lasers;
+- Carrierships - don't shoot, but can destroy enemy with itself;
+- Chaserships - chase a player across the gameboard and destroy the plane.
+
+## Instructions
+A player can move the plane with ARROW KEYS and shoot with SPACE bar. The player's plane can explode by enemy's laser or by enemy ship itself. Avoid enemy ships and lasers and destroy them.
 
 ## Game screenshots
 ![menu](assets/screenshots/menu.png)
