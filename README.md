@@ -3,7 +3,7 @@
 The goal of this project was to build a shooter game that can be played on the browser and stores your score on an online server
 
 ## Play the game
-[Link](https://vigorous-wilson-ce4139.netlify.app/)
+[Let's play](https://vigorous-wilson-ce4139.netlify.app/)
 
 ## Built with:
 
