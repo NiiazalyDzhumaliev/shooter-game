@@ -83,7 +83,7 @@ export default class GameOverScene extends Phaser.Scene {
     });
 
     this.checkHighScore();
-
+    postScore(this.playerName, this.gameScore);
     this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('button3');
     });
@@ -96,7 +96,6 @@ export default class GameOverScene extends Phaser.Scene {
   checkHighScore() {
     if (this.myScore > this.savedScore) {
       this.congra.setText('CONGRATULATIONS ON NEW HIGH SCORE!!');
-      postScore(this.playerName, this.gameScore);
     }
   }
 
